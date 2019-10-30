@@ -1,0 +1,18 @@
+version: '3'
+services:
+  web:
+    build: .
+    command: gunicorn -b 0.0.0.0:8000 siyapp.wsgi:application
+    depends_on:
+      - postgres
+    volumes:
+      - ./app:/app
+    ports:
+      - "8000:8000"
+    environment:
+      DATABASE_URL: postgres://siyapp@postgres/siyapp
+  postgres:
+    image: healthcheck/postgres:alpine
+    environment:
+      POSTGRES_USER: siyapp
+      POSTGRES_DB: siyapp
