@@ -15,5 +15,6 @@ Example commands you can run:
 `docker-compose exec web python manage.py createsuperuser`
 
 
-#### To take down
+
+## To shutdown containers
 docker-compose down --remove-orphans
